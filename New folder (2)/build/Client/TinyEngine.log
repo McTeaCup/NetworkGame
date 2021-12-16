@@ -1,0 +1,24 @@
+﻿  BaseObject.cpp
+  Client.cpp
+  ClientMain.cpp
+C:\Users\super\OneDrive\Skrivbord\New folder (6)\NetworkGame\New folder (2)\src\ClientMain.cpp(55,47): warning C4267: 'argument': conversion from 'size_t' to 'T', possible loss of data
+          with
+          [
+              T=unsigned char
+          ]
+C:\Users\super\OneDrive\Skrivbord\New folder (6)\NetworkGame\New folder (2)\src\ClientMain.cpp(56,40): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  Engine.cpp
+  Network.cpp
+  Player.cpp
+C:\Users\super\OneDrive\Skrivbord\New folder (6)\NetworkGame\New folder (2)\src\Player.cpp(28,13): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\super\OneDrive\Skrivbord\New folder (6)\NetworkGame\New folder (2)\src\Player.cpp(115,44): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\super\OneDrive\Skrivbord\New folder (6)\NetworkGame\New folder (2)\src\Player.cpp(115,21): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\super\OneDrive\Skrivbord\New folder (6)\NetworkGame\New folder (2)\src\Player.cpp(116,55): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\super\OneDrive\Skrivbord\New folder (6)\NetworkGame\New folder (2)\src\Player.cpp(116,17): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  Projectile.cpp
+C:\Users\super\OneDrive\Skrivbord\New folder (6)\NetworkGame\New folder (2)\src\Projectile.cpp(68,48): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\super\OneDrive\Skrivbord\New folder (6)\NetworkGame\New folder (2)\src\Projectile.cpp(68,21): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  Server.cpp
+  ServerMain.cpp
+  Generating Code...
+  TinyEngine.vcxproj -> C:\Users\super\OneDrive\Skrivbord\New folder (6)\NetworkGame\New folder (2)\bin\Game_Client.exe
