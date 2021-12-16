@@ -16,6 +16,7 @@ public:
 	int sprintMultiplier = false;
 
 	int inputX = 0;
+	int inputY = 0;
 	int teamId = 0;
 
 	float errorX = 0.f;

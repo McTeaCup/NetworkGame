@@ -10,4 +10,5 @@ enum class MessageType : unsigned char
 	PlayerInput,
 	PlayerRequestFire,
 	ProjectileSpawn,
+	ProjectileHit,
 };

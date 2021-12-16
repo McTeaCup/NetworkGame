@@ -2,6 +2,10 @@
 #include "Engine.h"
 #include "Player.h"
 #include "Server.h"
+#include "Network.h"
+#include "MessageType.h"
+#include "Client.h"
+
 
 Projectile projectiles[PROJECTILE_MAX];
 
@@ -35,7 +39,7 @@ void Projectile::update()
 	x += velocityX * engDeltaTime();
 	y += velocityY * engDeltaTime();
 
-	for(auto& player : players)
+	for (auto& player : players)
 	{
 		if (!player.alive)
 			continue;
@@ -49,9 +53,16 @@ void Projectile::update()
 		float radiusSqr = projectileRadius + playerRadius;
 		radiusSqr = radiusSqr * radiusSqr;
 
-		if(distSqr < radiusSqr)
+		if (distSqr < radiusSqr)
 		{
 			destroy();
+
+			NetMessage hitMsg;
+			engPrint("MESSAGE SENT");
+			hitMsg.write<MessageType>(MessageType::ProjectileHit);
+			hitMsg.write<int>(players->id);
+			clientSend(hitMsg);
+			hitMsg.free();
 
 #if SERVER
 			serverKickUser(player.id);

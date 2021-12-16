@@ -104,16 +104,17 @@ void handleMessage(int userId, NetMessage msg)
 
 			Player* player = &players[userId];
 
-			/*
-			if (player->inputX == 0 && player->inputY == 0)
+			if (player->inputX == 0)
 				break;
-			*/
 			if (engElapsedTime() - player->lastFireTime < playerFireCooldown)
 				break;
 
 			player->lastFireTime = engElapsedTime();
 			
-			//projectiles[projectileIndex].spawn(userId, player->x, player->y, player->inputX, player->inputY);
+			if (player->teamId == 0)
+				projectiles[projectileIndex].spawn(userId, player->x, player->y, player->inputX, -1);
+			else
+				projectiles[projectileIndex].spawn(userId, player->x, player->y, player->inputX, 1);
 
 			NetMessage response;
 			response.write<MessageType>(MessageType::ProjectileSpawn);
@@ -122,11 +123,18 @@ void handleMessage(int userId, NetMessage msg)
 			response.write<float>(player->x);
 			response.write<float>(player->y);
 			response.write<char>(player->inputX);
-			//response.write<char>(player->inputY);
+			response.write<char>(player->inputY);
 
 			serverBroadcast(response);
 			response.free();
 			break;
+		}
+
+		case MessageType::ProjectileHit:
+		{
+			engPrint("A player was killed");
+			int playerId = msg.read<int>();
+			serverKickUser(playerId);
 		}
 	}
 }

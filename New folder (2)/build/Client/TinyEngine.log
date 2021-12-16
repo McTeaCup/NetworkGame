@@ -5,4 +5,6 @@ C:\Users\super\OneDrive\Skrivbord\New folder (6)\NetworkGame\New folder (2)\src\
               T=unsigned char
           ]
 C:\Users\super\OneDrive\Skrivbord\New folder (6)\NetworkGame\New folder (2)\src\ClientMain.cpp(56,40): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  ServerMain.cpp
+  Generating Code...
   TinyEngine.vcxproj -> C:\Users\super\OneDrive\Skrivbord\New folder (6)\NetworkGame\New folder (2)\bin\Game_Client.exe
