@@ -98,7 +98,15 @@ void handleMessage(NetMessage msg)
 			char dirX = msg.read<char>();
 			char dirY = msg.read<char>();
 
-			projectiles[id].spawn(playerId, x, y, dirX, dirY);
+			if (playerId % 2 == 0)
+			{
+				//GREEN
+				projectiles[id].spawn(playerId, x, y, dirX, 1);
+			}
+			else
+			{	//RED
+				projectiles[id].spawn(playerId, x, y, dirX, -1);
+			}
 			break;
 		}
 

@@ -83,6 +83,13 @@ void Player::update()
 		{
 			NetMessage fireMsg;
 			fireMsg.write<MessageType>(MessageType::PlayerRequestFire);
+			fireMsg.write<int>(id);
+			fireMsg.write<int>(possessedPlayerId);
+			fireMsg.write<char>(x);
+			fireMsg.write<float>(y);
+			fireMsg.write<char>(frameInputX);
+			fireMsg.write<char>(1);
+
 			clientSend(fireMsg);
 			fireMsg.free();
 		}
