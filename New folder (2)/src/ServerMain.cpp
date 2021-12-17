@@ -103,9 +103,10 @@ void handleMessage(int userId, NetMessage msg)
 		}
 
 		Player* player = &players[userId];
-
+		/*
 		if (player->inputX == 0)
 			break;
+			*/
 		if (engElapsedTime() - player->lastFireTime < playerFireCooldown)
 			break;
 
@@ -258,21 +259,26 @@ int WinMain(HINSTANCE, HINSTANCE, char*, int)
 		// Check if we have a winner
 		if (gameStarted)
 		{
-			int numAlivePlayers = 0;
+			int numAlivePlayersTeam1 = 0;
+			int numAlivePlayersTeam2 = 0;
 			int lastAlivePlayer = -1;
 			for (auto& player : players)
 			{
 				if (player.alive)
 				{
-					++numAlivePlayers;
-					lastAlivePlayer = player.id;
+					if (player.teamId == 0)
+						numAlivePlayersTeam1++;
+					else
+						numAlivePlayersTeam2++;
+					//++numAlivePlayers;
+					//lastAlivePlayer = player.id;
 				}
 			}
 
-			if (numAlivePlayers == 1)
-				engTextf(400, 300, "'%s' WINS!", players[lastAlivePlayer].name);
-			else if (numAlivePlayers == 0)
-				engText(400, 300, "Draw :(");
+			if (numAlivePlayersTeam1 == 0)
+				engTextf(400, 300, "TEAM RED WINS!");
+			else if (numAlivePlayersTeam2 == 0)
+				engText(400, 300, "TEAM GREEN WINS!");
 		}
 
 

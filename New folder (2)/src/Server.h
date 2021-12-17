@@ -2,7 +2,7 @@
 #include <WinSock2.h>
 struct NetMessage;
 
-#define SERVER_CAPACITY 126
+#define SERVER_CAPACITY 6
 
 bool serverStartup(unsigned short port);
 bool serverIsStarted();

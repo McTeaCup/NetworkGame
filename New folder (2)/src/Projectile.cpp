@@ -46,7 +46,7 @@ void Projectile::update()
 
 		if (player.id == ownerPlayer)
 			continue;
-
+		
 		float diffX = x - player.x;
 		float diffY = y - player.y;
 		float distSqr = (diffX * diffX + diffY * diffY);
@@ -56,13 +56,6 @@ void Projectile::update()
 		if (distSqr < radiusSqr)
 		{
 			destroy();
-
-			NetMessage hitMsg;
-			engPrint("MESSAGE SENT");
-			hitMsg.write<MessageType>(MessageType::ProjectileHit);
-			hitMsg.write<int>(players->id);
-			clientSend(hitMsg);
-			hitMsg.free();
 
 #if SERVER
 			serverKickUser(player.id);
