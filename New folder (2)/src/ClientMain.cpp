@@ -97,7 +97,7 @@ void handleMessage(NetMessage msg)
 			float y = msg.read<float>();
 			char dirX = msg.read<char>();
 			char dirY = msg.read<char>();
-
+			projectiles[id].spawn(playerId, x, y, dirX, dirY);
 			break;
 		}
 	}

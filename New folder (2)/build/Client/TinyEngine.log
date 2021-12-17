@@ -1,10 +1,9 @@
-﻿  ClientMain.cpp
-C:\Users\super\OneDrive\Skrivbord\New folder (6)\NetworkGame\New folder (2)\src\ClientMain.cpp(55,47): warning C4267: 'argument': conversion from 'size_t' to 'T', possible loss of data
-          with
-          [
-              T=unsigned char
-          ]
-C:\Users\super\OneDrive\Skrivbord\New folder (6)\NetworkGame\New folder (2)\src\ClientMain.cpp(56,40): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+﻿  Player.cpp
+C:\Users\super\OneDrive\Skrivbord\New folder (6)\NetworkGame\New folder (2)\src\Player.cpp(28,13): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\super\OneDrive\Skrivbord\New folder (6)\NetworkGame\New folder (2)\src\Player.cpp(118,44): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\super\OneDrive\Skrivbord\New folder (6)\NetworkGame\New folder (2)\src\Player.cpp(118,21): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\super\OneDrive\Skrivbord\New folder (6)\NetworkGame\New folder (2)\src\Player.cpp(119,55): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\super\OneDrive\Skrivbord\New folder (6)\NetworkGame\New folder (2)\src\Player.cpp(119,17): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
   ServerMain.cpp
   Generating Code...
   TinyEngine.vcxproj -> C:\Users\super\OneDrive\Skrivbord\New folder (6)\NetworkGame\New folder (2)\bin\Game_Client.exe

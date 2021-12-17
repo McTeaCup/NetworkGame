@@ -53,6 +53,9 @@ void Player::update()
 #if CLIENT
 	if(hasControl())
 	{
+		if(!gameHasStarted)
+		CreateHelpText();
+
 		const char* teamMessage = teamId == 0 ? "YOU'RE ON THE GREEN TEAM" : "YOU'RE ON THE RED TEAM";
 		const int teamMessagePosY = teamId == 0 ? 450 : 100;
 		teamId == 0 ? engSetColor(0,255,0,255) : engSetColor(255,0,0,255);
@@ -72,7 +75,7 @@ void Player::update()
 			msg.write<MessageType>(MessageType::PlayerInput);
 			msg.write<int>(id);
 			msg.write<float>(x);
-
+			msg.write<float>(y);
 			msg.write<char>(frameInputX);
 
 			clientSend(msg);
@@ -114,4 +117,12 @@ void Player::draw()
 #endif
 	engFillRect((int)x - playerRadius, (int)y - playerRadius, 32, 32);
 	engText((int)x - playerRadius, (int)y - playerRadius - 16, name);
+}
+
+void Player::CreateHelpText()
+{
+	engSetColor(255, 255, 255, 255);
+	engText(300, 250, "Move to the sides and press 'C' to fire");
+	engText(325, 270, "Hold 'SPACE' to move faster");
+	engText(335, 285, "Last team standing win");
 }

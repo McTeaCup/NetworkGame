@@ -75,7 +75,7 @@ void Projectile::update()
 
 void Projectile::draw()
 {
-	engSetColor(0xFFFFFFFF);
+	engSetColor(0xFFFFFFFFF);
 	engFillRect((int)x - projectileRadius, (int)y - projectileRadius, 8, 8);
 }
 

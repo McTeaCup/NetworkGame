@@ -76,7 +76,7 @@ void handleMessage(int userId, NetMessage msg)
 			player->netReceivePosition(newX, newY);
 
 			player->inputX = msg.read<char>();
-			//player->inputY = msg.read<char>();
+			player->inputY = 0;
 			serverBroadcast(msg);
 			break;
 		}
@@ -123,7 +123,11 @@ void handleMessage(int userId, NetMessage msg)
 			response.write<float>(player->x);
 			response.write<float>(player->y);
 			response.write<char>(player->inputX);
-			response.write<char>(player->inputY);
+			if(player->id == 0)
+				response.write<char>(1);
+			else
+				response.write<char>(-1);
+
 
 			serverBroadcast(response);
 			response.free();
@@ -134,7 +138,6 @@ void handleMessage(int userId, NetMessage msg)
 		{
 			engPrint("A player was killed");
 			int playerId = msg.read<int>();
-			serverKickUser(playerId);
 		}
 	}
 }
@@ -254,28 +257,43 @@ int WinMain(HINSTANCE, HINSTANCE, char*, int)
 		// Check if we have a winner
 		if(gameStarted)
 		{
-			int numAlivePlayers = 0;
+			int numAlivePlayersTeam1 = 0;
+			int numAlivePlayersTeam2 = 0;
 			int lastAlivePlayer = -1;
 			for (auto& player : players)
 			{
 				if (player.alive)
 				{
-					++numAlivePlayers;
-					lastAlivePlayer = player.id;
+					if (player.teamId == 0)
+					{
+						numAlivePlayersTeam1++;
+					}
+					else if (player.teamId == 1)
+					{
+						numAlivePlayersTeam2++;
+					}
+
+					//++numAlivePlayers;
+					//lastAlivePlayer = player.id;
 				}
 			}
 
-			if (numAlivePlayers == 1)
-				engTextf(400, 300, "'%s' WINS!", players[lastAlivePlayer].name);
+			if (numAlivePlayersTeam1 == 0)
+				engTextf(400, 300, "TEAM RED WINS!");
+			else if(numAlivePlayersTeam2 == 0)
+				engTextf(400, 300, "TEAM GREEN WINS!");
+			/*
 			else if (numAlivePlayers == 0)
 				engText(400, 300, "Draw :(");
+				*/
 		}
 		
 
 		for (auto& player : players)
 		{
-			if (player.alive)
+			if (player.alive) {
 				player.update();
+			}
 		}
 
 		for (auto& projectile : projectiles)

@@ -11,6 +11,7 @@ class Player
 public:
 	int id = -1;
 	bool alive = false;
+	bool gameHasStarted = false;
 	float x;
 	float y;
 	int sprintMultiplier = false;
@@ -29,6 +30,7 @@ public:
 
 	void spawn(int id, int spawnX, int spawnY);
 	void destroy();
+	void CreateHelpText();
 
 	bool hasControl();
 	void update();
